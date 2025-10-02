@@ -4,7 +4,7 @@ import { createClient } from "./browser-client"
 export const getHomePosts = async (supabase: ReturnType<typeof createClient>) => {
     return await supabase
         .from("post")
-        .select('id, title, slug, users("username"), image')
+        .select('*, users("username")')
         .order('created_at', {ascending:false})
 
 }
