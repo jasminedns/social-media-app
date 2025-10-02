@@ -37,4 +37,6 @@ export const middleware = async (request:NextRequest) => {
 
         return NextResponse.redirect(newUrl)
     }
+
+    return supabaseResponse;
 }
