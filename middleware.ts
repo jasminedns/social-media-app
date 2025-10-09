@@ -26,7 +26,8 @@ export const middleware = async (request:NextRequest) => {
 
     //array of protective roots. $ is the end of the string
     const protectedRoutes = [
-        /^\/create$/
+        /^\/create$/,
+        /^\/[^\/]+\/edit$/
     ]
 
     if (!user && protectedRoutes.some(route => route.test(request.nextUrl.pathname))) {

@@ -16,7 +16,8 @@ export const CreatePost = async (userData:z.infer<typeof postSchema>) => {
     const {data: {user}} = await supabase.auth.getUser();
     if(!user) {throw new Error("Not Authorized")}
 
-    const imageFile = userData.image.get('image')
+    const imageFile = userData.image?.get('image')
+
     if(!(imageFile instanceof File) && imageFile !== null) {
         throw new Error("Malformed image file")
     }

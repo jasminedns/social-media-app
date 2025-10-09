@@ -25,11 +25,11 @@ const SearchBar = () => {
     }
     
     return (
-        <div className="relative">
+        <div className="relative m-3">
             <div className="flex items-center">
-                <Search />
+                <Search size={16}/>
                 <input 
-                    className="border-1 rounded-2xl p-2 mx-2" 
+                    className="border-1 rounded-2xl p-1 md:p-2 mx-2" 
                     placeholder="Search by post title" 
                     name="Search"
                     value={userInput}
@@ -39,9 +39,10 @@ const SearchBar = () => {
             { data &&
                 <div 
                     onClick={() => setUserInput('')}
-                    className="absolute top-12 mx-2 right-0 bg-[#5865f2] text-white p-1 rounded-2xl">
+                    className="absolute w-full top-12 mx-2 right-0 bg-white text-[#5865f2] font-bold p-1 rounded-2xl">
                     {data.map(({title, slug}) =>
                         <Link 
+                            key={slug}
                             href={`/${slug}`} 
                             className="block p-2 hover:text-[#c7c8c8] rounded-2xl"
                         >

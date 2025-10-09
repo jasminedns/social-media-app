@@ -7,13 +7,13 @@ const HomePosts = ({posts}:{posts:HomePostsType}) => {
     return (
         <div>
             { posts && posts.map(({id, slug, title, users, image}) =>
-            <div key={id} className={`${image ? "flex justify-between items-center" : ""} m-3 rounded-2xl border-1`}>
+            <div key={id} className={`${image ? "flex flex-col md:flex-row justify-between md:items-center" : ""} m-3 rounded-2xl border-1`}>
                 <Link href={`/${slug}`} className="block m-4 p-3">
-                    <h2 className="font-bold">{title}</h2>
-                    <p>Posted by {users.username}</p>
+                    <p>By {users.username}</p>
+                    <h2 className="font-bold my-2 md:ml-3">{title}</h2>
                 </Link>
                 {image !== null &&
-                    <div className="w-30 m-4 p-3">
+                    <div className="w-30 md:m-4 p-3 m-auto">
                         <img src={image} alt={`${image} ${title}`} className="rounded"/>
                     </div>
                 }

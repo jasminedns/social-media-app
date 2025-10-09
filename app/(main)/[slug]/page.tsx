@@ -1,6 +1,7 @@
 import { getSinglePost } from "@/utils/supabase/queries"
 import { createClient } from "@/utils/supabase/server-client"
 import DeleteButton from "./DeleteButton"
+import EditButton from "./EditButton"
 
 const singlePost = async ({params}:{params:{slug:string}}) => {
     const {slug} = await params
@@ -25,7 +26,10 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
                         <img src={data.image} alt={`${data.title} image`} className="my-4 rounded-2xl" />
                     )}
                     { isAuthor &&
-                        <DeleteButton postId={data.id} />
+                        <div className="flex items-center gap-3 justify-end">
+                            <DeleteButton postId={data.id} />
+                            <EditButton slug={slug}/>
+                        </div>
                     }
                 </div>
             }

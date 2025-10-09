@@ -1,21 +1,28 @@
-import { createClient } from "@/utils/supabase/server-client";
 import Link from "next/link"
 import LogoutButton from "./LogoutButton";
+import { User } from "@supabase/supabase-js";
 
-const AccountLinks = async () => {
+interface AccountLinksProps {
+  user: User | null;
+  closeMenu?: () => void;
+}
 
-    const supabase = await createClient();
-    const {data: {user}, error} = await supabase.auth.getUser()
-    
+const AccountLinks = ({user, closeMenu}:AccountLinksProps) => {
+
     return (
         <div>
             { user 
                 ?
-                    <div className="flex flex-row items-center justify-center mr-10">
-                        <Link href="/create" className="button-primary mr-2">Create</Link>
-                        <LogoutButton />
+                    <div className="flex flex-col md:flex-row items-center justify-center md:mr-10">
+                        <Link href="/create" 
+                            onClick={closeMenu}
+                            className="button-primary rounded-t-2xl md:rounded-2xl md:mr-2"
+                        >
+                            Create
+                        </Link>
+                        <LogoutButton toggleMenu={closeMenu}/>
                     </div> 
-                : <Link href="/auth/login" className="button-primary">Log In</Link>
+                : <Link href="/auth/login" className="block button-primary rounded-2xl md:mr-2">Log In</Link>
     
             }
         </div>

@@ -2,17 +2,24 @@
 
 import { LogOut } from "@/actions/log-out";
 
-const LogoutButton = () => {
+type LogoutProps = {
+    toggleMenu: (() => void) | undefined
+}
+
+const LogoutButton = ({toggleMenu}:LogoutProps) => {
 
     const handleClick = () => {
         LogOut()
+        if (toggleMenu) {
+            toggleMenu()
+        }
     }
     
     return (
-        <div>
+        <div className="w-full">
             <button
                 onClick={handleClick}
-                className="button-primary mr-10 hover:bg-gray-200"
+                className="button-primary rounded-b-2xl md:rounded-2xl md:mr-10"
             >
                 Log out
             </button>
