@@ -13,7 +13,7 @@ const DeleteButton = ({postId}:{postId:number}) => {
     })
 
     return (
-        <div className="my-4 text-right">
+        <div>
             <button 
                 className="button-secondary"
                 onClick={() => DeletePost(postId)}

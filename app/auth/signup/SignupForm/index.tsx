@@ -22,42 +22,42 @@ const SignupForm = () => {
     })
 
     return (
-        <div>
+        <div className="p-3 md:p-8 border-1 rounded-2xl w-full md:w-1/2">
             <form 
                 className="p-4 flex flex-col" 
                 onSubmit={handleSubmit(values => mutate(values))}
             >
-                <fieldset className="ml-4">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="email">Email</label>
                     <input 
-                    className="ml-2 mb-4" 
+                    className="form-input" 
                     id="email" 
                     {...register("email")} 
                     placeholder="Enter your email..." 
                     />
                 </fieldset>
                 { errors.email && <ErrorMessage message={errors.email.message!}/>}
-                <fieldset className="ml-4">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="username">Username</label>
                     <input 
-                    className="ml-2 mb-4" 
-                    id="username"  
-                    {...register("username")}
-                    placeholder="Enter your username..."
-                     />
+                        className="form-input" 
+                        id="username"  
+                        {...register("username")}
+                        placeholder="Enter your username..."
+                    />
                 </fieldset>
                 { errors.username && <ErrorMessage message={errors.username.message!}/>}
-                <fieldset className="ml-4 mb-3">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="password">Password</label>
                     <input 
                     type="password" 
-                    className="ml-2 mb-4" id="password" 
+                    className="form-input" id="password" 
                     {...register("password")}
                     placeholder="Enter your password..." 
                     />
                 </fieldset>
                     { errors.password && <ErrorMessage message={errors.password.message!}/>}
-                <button className="button-secondary w-1/2 m-auto hover:bg-gray-200">Submit</button>
+                <button className="button-secondary min-w-[231px] m-auto hover:bg-gray-200">Submit</button>
             </form>
             {error && <ErrorMessage message={error.message}/>}
         </div>

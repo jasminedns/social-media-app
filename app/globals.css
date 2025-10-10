@@ -13,7 +13,10 @@
     @apply bg-[#5865f2] border-1 border-[#5865f2] text-white py-2 px-4 font-bold rounded-2xl cursor-pointer hover:bg-[#4752c4] hover:border-white hover:text-[#5865f2]
   }
   .form-input {
-    @apply ml-2 mb-4 border-1 border-white rounded-2xl p-2 
+    @apply border-1 border-white rounded-2xl p-2 my-4
+  }
+  .fieldset-primary {
+    @apply flex flex-col justify-center items-center
   }
 }
 

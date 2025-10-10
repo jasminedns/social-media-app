@@ -17,39 +17,39 @@ const LoginForm = () => {
         resolver: zodResolver(logInSchema)
     })
 
-    const {mutate, isPending ,error} = useMutation({
+    const {mutate, isPending, data, error} = useMutation({
         mutationFn: LogIn
     })
 
     return (
-        <div className="p-4">
+        <div className="p-3 md:p-8 border-1 rounded-2xl w-full md:w-1/2">
             <form 
                 className="p-4 flex flex-col" 
                 onSubmit={handleSubmit(values => mutate(values))}>
-                <fieldset className="ml-4">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="email">Email</label>
                     <input 
-                        className="ml-2 mb-4"
+                        className="form-input"
                         {...register('email')} 
                         id="email" 
                         placeholder="Enter your email..." 
                     />
                     { errors.email && <ErrorMessage message={errors.email.message!}/>}
                 </fieldset>
-                <fieldset className="ml-4 mb-3">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="password">Password</label>
                     <input 
                         type="password" 
                         {...register('password')}
-                        className="ml-2 mb-4" 
+                        className="form-input" 
                         id="password"
                         placeholder="Enter your password..." 
                     />
                     { errors.password && <ErrorMessage message={errors.password.message!}/>}
                 </fieldset>
-                <button type="submit" className="button-secondary w-1/2 m-auto hover:bg-gray-200">{isPending ? "Logging you in!" : "Submit"}</button>
+                <button type="submit" className="button-secondary min-w-[231px] m-auto hover:bg-gray-200">{isPending ? "Logging you in!" : "Submit"}</button>
             </form>
-            {error && <ErrorMessage message={error.message}/>}
+            {data?.error && <ErrorMessage message={data.error}/>}
         </div>
     )
 }

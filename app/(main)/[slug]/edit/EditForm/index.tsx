@@ -23,66 +23,69 @@ const EditForm = ({postId, defaultValues}: {postId:number, defaultValues : Pick<
     })
 
     return (
-        <form
-            onSubmit = {
-                handleSubmit(values => {
-                    let imageForm = undefined;
+        <div className="p-4 flex justify-center items-center">
+            <form
+                className="p-10 flex flex-col border-1 rounded-2xl border-white md:w-1/2"
+                onSubmit = {
+                    handleSubmit(values => {
+                        let imageForm = undefined;
 
-                    if(values.image?.length && typeof values.image !== "string") {
-                        imageForm = new FormData()
-                        imageForm.append("image", values.image[0])
-                    }
-                    //this if statement runs ONLY if values.image has a length. If it's 0 it's not a length
-                    
-                    mutate({
-                        postId, 
-                        userData: {
-                            title: values.title,
-                            content: values.content,
-                            image: imageForm
+                        if(values.image?.length && typeof values.image !== "string") {
+                            imageForm = new FormData()
+                            imageForm.append("image", values.image[0])
                         }
+                        //this if statement runs ONLY if values.image has a length. If it's 0 it's not a length
+                        
+                        mutate({
+                            postId, 
+                            userData: {
+                                title: values.title,
+                                content: values.content,
+                                image: imageForm
+                            }
+                        })
                     })
-                })
-            }
-        >
-            <fieldset className="ml-4">
-                <label htmlFor="title">Title</label>
-                <input 
-                    {...register("title")}
-                    className="ml-2 mb-4"
-                    id="title" 
-                    placeholder="Title" 
-                />
-            </fieldset>
-            <fieldset className="flex ml-4 mb-3">
-                <label htmlFor="content">Content</label>
-                <textarea 
-                    {...register("content")}
-                    className="ml-2 mb-4" 
-                    id="content"
-                    placeholder="Content (optional)"
-                ></textarea>
-            </fieldset>
-            <fieldset>
-                {defaultValues.image 
-                    && 
-                        <img src={defaultValues.image} alt="post image" />
-                } 
-                    <div>
-                        <input 
-                            type="file"
-                            accept="image/*"
-                            className="mb-4 button-primary"
-                            {...register('image')} 
-                            id="image" 
-                        />
-                    </div>
-            </fieldset>
-            <fieldset>
-                <button className="button-secondary">Update</button>
-            </fieldset>
-            {error && <ErrorMessage message={error.message}/>}
-        </form>
+                }
+            >
+                <fieldset className="fieldset-primary">
+                    <label htmlFor="title">Title</label>
+                    <input 
+                        {...register("title")}
+                        className="form-input min-w-[232px]"
+                        id="title" 
+                        placeholder="Title" 
+                    />
+                </fieldset>
+                <fieldset className="fieldset-primary">
+                    <label htmlFor="content">Content</label>
+                    <textarea 
+                        {...register("content")}
+                        className="form-input min-w-[232px]" 
+                        id="content"
+                        placeholder="Content (optional)"
+                    ></textarea>
+                </fieldset>
+                <fieldset className="fieldset-primary">
+                    {defaultValues.image 
+                        && 
+                            <img src={defaultValues.image} alt="post image" className="rounded-2xl"/>
+                    } 
+                        <div>
+                            <input 
+                                type="file"
+                                accept="image/*"
+                                className="min-w-[232px] my-4 button-primary rounded-2xl bg-white text-[#5865f2]"
+                                {...register('image')} 
+                                id="image" 
+                            />
+                        </div>
+                </fieldset>
+                <fieldset>
+                    <button className="button-secondary min-w-[232px] m-auto hover:bg-gray-200">Update</button>
+                </fieldset>
+                {error && <ErrorMessage message={error.message}/>}
+            </form>
+        </div>
     )
 }
 

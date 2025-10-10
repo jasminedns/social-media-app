@@ -12,21 +12,23 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
 
     const isAuthor = user?.id === data?.user_id ? true : false
     return (
-        <div>
+        <div className="flex grow">
             {data && 
-                <div className="m-5">
-                    <div className="my-2">
-                        <span>By {data.users?.username}</span>
+                <div className="flex flex-col items-center justify-between m-5">
+                    <div className="w-full m-2">
+                        <div className="m-2">
+                            <span>By {data.users?.username}</span>
+                        </div>
+                        <div className="ml-3">
+                            <h2 className="font-bold text-xl md:text-3xl">{data.title}</h2>
+                            <p className="mt-5">{data.content}</p>
+                        </div>
+                        {data.image && (
+                            <img src={data.image} alt={`${data.title} image`} className="my-4 rounded-2xl" />
+                        )}
                     </div>
-                    <div>
-                        <h2 className="font-bold text-3xl">{data.title}</h2>
-                        <p className="mt-5">{data.content}</p>
-                    </div>
-                    {data.image && (
-                        <img src={data.image} alt={`${data.title} image`} className="my-4 rounded-2xl" />
-                    )}
                     { isAuthor &&
-                        <div className="flex items-center gap-3 justify-end">
+                        <div className="flex items-center gap-x-4 justify-end">
                             <DeleteButton postId={data.id} />
                             <EditButton slug={slug}/>
                         </div>

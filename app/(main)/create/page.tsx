@@ -18,9 +18,9 @@ const createPage = () => {
     })
 
     return (
-        <div className="p-4 border-2 border-amber-300">
+        <div className="p-4 flex justify-center items-center">
             <form 
-                className="p-4 flex flex-col" 
+                className="p-10 flex flex-col border-1 rounded-2xl border-white md:w-1/2" 
                 onSubmit={
                     handleSubmit(values => {
                         let imageForm = new FormData();
@@ -38,38 +38,38 @@ const createPage = () => {
                     })
                 }
             >
-                <fieldset className="ml-4">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="title">Title</label>
                     <input 
-                        className="form-input"
+                        className="form-input min-w-[232px]"
                         {...register('title')} 
                         id="title" 
                         placeholder="Title" 
                     />
                     {errors.title && <ErrorMessage message={errors.title.message!}/>}
                 </fieldset>
-                <fieldset className="flex items-center ml-4 mb-3">
+                <fieldset className="fieldset-primary">
                     <label htmlFor="content">Content</label>
                     <textarea 
                         {...register('content')}
-                        className="form-input" 
+                        className="form-input min-w-[232px]" 
                         id="content"
                         placeholder="Content (optional)" 
                     ></textarea>
                     {errors.content && <ErrorMessage message={errors.content.message!}/>}
 
                 </fieldset>
-                <fieldset className="ml-4">
+                <fieldset className="fieldset-primary">
                     <input 
                         type="file"
                         accept="image/*"
-                        className="mb-4 button-primary rounded-2xl bg-white text-[#5865f2]"
+                        className="min-w-[232px] mb-4 button-primary rounded-2xl bg-white text-[#5865f2]"
                         {...register('image')} 
                         id="image" 
                     />
                     {errors.image && <ErrorMessage message={errors.image.message!}/>}
                 </fieldset>
-                <button type="submit" className="button-secondary w-1/2 m-auto hover:bg-gray-200">Create Post</button>
+                <button type="submit" className="button-secondary min-w-[232px] m-auto hover:bg-gray-200">Create Post</button>
             </form>
         </div>
     )

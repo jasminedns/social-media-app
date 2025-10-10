@@ -12,6 +12,6 @@ export const LogIn = async (userData:z.infer<typeof logInSchema>) => {
 
     const {data: {user}, error} = await supabase.auth.signInWithPassword(parsedData)
 
-    if(error) throw error
+    if(error) return {error: error.message}
     redirect("/")
 }
