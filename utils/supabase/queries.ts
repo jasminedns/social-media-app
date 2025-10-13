@@ -6,10 +6,22 @@ export const getHomePosts = async (supabase: ReturnType<typeof createClient>) =>
         .from("post")
         .select('*, users("username")')
         .order('created_at', {ascending:false})
-
 }
 
 export type HomePostsType = QueryData<ReturnType<typeof getHomePosts>>
+
+export const getPostComment = async (postId:number) => {
+    const supabase = createClient()
+    
+    return await supabase
+        .from("comment")
+        .select('*, users("username")')
+        .eq("post_id", postId)
+        .order('created_at', {ascending:true})
+}
+
+export type PostCommentType = QueryData<ReturnType<typeof getPostComment>>
+
 
 export const getSinglePost = async (slug:string) => {
     const supabase = createClient();

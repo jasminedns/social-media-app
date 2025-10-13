@@ -81,7 +81,8 @@ const EditForm = ({postId, defaultValues}: {postId:number, defaultValues : Pick<
                         </div>
                 </fieldset>
                 <fieldset>
-                    <button className="button-secondary min-w-[232px] m-auto hover:bg-gray-200">Update</button>
+                    <button 
+                        className="button-secondary min-w-[232px] m-auto hover:bg-gray-200">Update</button>
                 </fieldset>
                 {error && <ErrorMessage message={error.message}/>}
             </form>

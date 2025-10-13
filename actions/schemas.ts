@@ -20,3 +20,7 @@ export const postSchema = z.object({
 export const postWithImageSchema = postSchema.omit({image: true}).extend({image: z.unknown().transform(value => {
     return value as FileList
 }).optional()})
+
+export const commentSchema = z.object({
+    comment: z.string().min(1, "Must write something before posting")
+})

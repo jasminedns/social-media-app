@@ -1,7 +1,8 @@
-import { getSinglePost } from "@/utils/supabase/queries"
+import {  getSinglePost } from "@/utils/supabase/queries"
 import { createClient } from "@/utils/supabase/server-client"
 import DeleteButton from "./DeleteButton"
 import EditButton from "./EditButton"
+import PostComment from "./PostComment"
 
 const singlePost = async ({params}:{params:{slug:string}}) => {
     const {slug} = await params
@@ -27,6 +28,7 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
                             <img src={data.image} alt={`${data.title} image`} className="my-4 rounded-2xl" />
                         )}
                     </div>
+                    <PostComment postId={data.id} slug={slug}/>
                     { isAuthor &&
                         <div className="flex items-center gap-x-4 justify-end">
                             <DeleteButton postId={data.id} />
