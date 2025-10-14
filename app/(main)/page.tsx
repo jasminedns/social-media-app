@@ -9,7 +9,7 @@ export default async function Home() {
   const { data, error } = await getHomePosts(supabase)
 
   return (
-    <div className="md:w-[80%] m-auto">
+    <div className="lg:w-[80%] m-auto">
       <HomePosts posts={data!}/>
     </div>
   );

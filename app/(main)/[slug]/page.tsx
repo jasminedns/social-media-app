@@ -13,9 +13,9 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
 
     const isAuthor = user?.id === data?.user_id ? true : false
     return (
-        <div className="flex grow">
+        <div className="flex grow ">
             {data && 
-                <div className="flex flex-col items-center justify-between m-5">
+                <div className="flex flex-col items-center justify-between m-5 w-full">
                     <div className="w-full m-2">
                         <div className="m-2">
                             <span>By {data.users?.username}</span>

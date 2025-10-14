@@ -13,7 +13,7 @@ const AccountLinks = ({user, closeMenu}:AccountLinksProps) => {
         <div>
             { user 
                 ?
-                    <div className="flex flex-col md:flex-row items-center justify-center md:mr-10">
+                    <div className="flex flex-col md:flex-row items-center justify-center lg:mr-10">
                         <Link href="/create" 
                             onClick={closeMenu}
                             className="button-primary rounded-t-2xl md:rounded-2xl md:mr-2"
@@ -23,7 +23,7 @@ const AccountLinks = ({user, closeMenu}:AccountLinksProps) => {
                         <LogoutButton toggleMenu={closeMenu}/>
                     </div> 
                 : 
-                    <div className="flex flex-col md:flex-row items-center justify-center md:mr-10">
+                    <div className="flex flex-col md:flex-row items-center justify-center lg:mr-10">
                         <Link href="/auth/login" 
                             onClick={closeMenu}
                             className="button-primary rounded-t-2xl md:rounded-2xl md:mr-2"
