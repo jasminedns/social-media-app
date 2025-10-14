@@ -17,7 +17,7 @@ const SignupForm = () => {
         resolver:zodResolver(signUpSchema)
     })
 
-    const {mutate, error} = useMutation({
+    const {mutate, data, error} = useMutation({
         mutationFn: SignUp
     })
 
@@ -59,7 +59,7 @@ const SignupForm = () => {
                     { errors.password && <ErrorMessage message={errors.password.message!}/>}
                 <button className="button-secondary min-w-[231px] m-auto hover:bg-gray-200">Submit</button>
             </form>
-            {error && <ErrorMessage message={error.message}/>}
+            {data?.error && <ErrorMessage message={data.error}/>}
         </div>
     )
 }

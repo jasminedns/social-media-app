@@ -17,7 +17,7 @@ export const SignUp = async (userData:z.infer<typeof signUpSchema>) => {
             .insert([{id: user.id, email: user.email, username: parsedData.username}])
     }
 
-    if (error) throw error
+    if (error) return {error: error.message}
 
     redirect("/")
 }
