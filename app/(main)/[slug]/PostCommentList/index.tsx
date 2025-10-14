@@ -1,28 +1,22 @@
 import { getPostComment } from "@/utils/supabase/queries"
 import { createClient } from "@/utils/supabase/server-client"
 import CommentForm from "../CommentForm";
+import SingleComment from "../SingleComment";
 
-const PostComment = async ({postId, slug}:{postId:number, slug:string}) => {
+const PostCommentList = async ({postId, slug, postAuthor}:{postId:number, slug:string, postAuthor:boolean}) => {
     const supabase = await createClient();
     const {data : {user}} = await supabase.auth.getUser();
     const {data, error} = await getPostComment(postId)
-    
+
     return (
         <div className="w-full">
             <div>
                 {data?.length 
                     ? 
-                    (
-                        data?.map(comment => (
-                            <div key={comment.id} className="flex gap-2 border-1 my-4 p-2 rounded-2xl">
-                                <h2 className="font-bold">{comment.users.username}:</h2>
-                                <div>
-                                    {comment.text}
-                                </div>
-                            </div>
-                        ))
-                    )
-                    : (<p>No comment yet</p>)
+                    (data?.map(comment => 
+                        <SingleComment key={comment.id} comment={comment} user={user} postAuthor={postAuthor}/>
+                    ))
+                    : (<p>No comments yet</p>)
                 }
             </div>
             {user && 
@@ -34,4 +28,4 @@ const PostComment = async ({postId, slug}:{postId:number, slug:string}) => {
     )
 }
 
-export default PostComment
+export default PostCommentList;

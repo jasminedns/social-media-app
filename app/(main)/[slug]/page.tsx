@@ -2,7 +2,7 @@ import {  getSinglePost } from "@/utils/supabase/queries"
 import { createClient } from "@/utils/supabase/server-client"
 import DeleteButton from "./DeleteButton"
 import EditButton from "./EditButton"
-import PostComment from "./PostComment"
+import PostCommentList from "./PostCommentList"
 
 const singlePost = async ({params}:{params:{slug:string}}) => {
     const {slug} = await params
@@ -12,6 +12,7 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
     const {data: {user}} = await supabase.auth.getUser()
 
     const isAuthor = user?.id === data?.user_id ? true : false
+
     return (
         <div className="flex grow ">
             {data && 
@@ -25,10 +26,10 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
                             <p className="mt-5">{data.content}</p>
                         </div>
                         {data.image && (
-                            <img src={data.image} alt={`${data.title} image`} className="my-4 rounded-2xl" />
+                            <img src={data.image} alt={`${data.title} image`} className="my-4 mx-auto rounded-2xl" />
                         )}
                     </div>
-                    <PostComment postId={data.id} slug={slug}/>
+                    <PostCommentList postId={data.id} slug={slug} postAuthor={isAuthor}/>
                     { isAuthor &&
                         <div className="flex items-center gap-x-4 justify-end">
                             <DeleteButton postId={data.id} />

@@ -13,12 +13,13 @@ const createPage = () => {
         resolver: zodResolver(postWithImageSchema)
     })
 
-    const {mutate, error} = useMutation({
+    const {mutate, data, error} = useMutation({
         mutationFn: CreatePost
     })
-
+    
     return (
-        <div className="p-4 flex justify-center items-center">
+        <div className="grow p-4 flex flex-col justify-center items-center">
+            <h2 className="text-3xl text-center my-4 uppercase">create</h2>
             <form 
                 className="p-10 flex flex-col border-1 rounded-2xl border-white md:w-1/2" 
                 onSubmit={
@@ -63,7 +64,7 @@ const createPage = () => {
                     <input 
                         type="file"
                         accept="image/*"
-                        className="min-w-[232px] mb-4 button-primary rounded-2xl bg-white text-[#5865f2]"
+                        className="max-w-[232px] mb-4 button-primary rounded-2xl bg-white text-[#5865f2]"
                         {...register('image')} 
                         id="image" 
                     />
