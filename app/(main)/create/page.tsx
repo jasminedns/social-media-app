@@ -16,7 +16,7 @@ const createPage = () => {
     const {mutate, data, error} = useMutation({
         mutationFn: CreatePost
     })
-    
+
     return (
         <div className="grow p-4 flex flex-col justify-center items-center">
             <h2 className="text-3xl text-center my-4 uppercase">create</h2>
@@ -71,6 +71,7 @@ const createPage = () => {
                     {errors.image && <ErrorMessage message={errors.image.message!}/>}
                 </fieldset>
                 <button type="submit" className="button-secondary min-w-[232px] m-auto hover:bg-gray-200">Create Post</button>
+                {data?.error && <ErrorMessage message={data.error}/>}
             </form>
         </div>
     )

@@ -25,10 +25,11 @@ export const CreatePost = async (userData:z.infer<typeof postSchema>) => {
 
     const userId = user.id;
 
-    await supabase
+    const {data, error} = await supabase
         .from('post')
         .insert([{user_id: userId, slug: slug, ...parsedData, image: imagePublicUrl}])
-        .throwOnError()
+
+    if(error) return {error: error.message}
 
     revalidatePath("/")
     redirect(`/${slug}`)
