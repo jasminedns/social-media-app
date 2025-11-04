@@ -10,7 +10,7 @@ const Header = async () => {
 
     return (
         <>
-            <header className={`flex flex-col md:flex-row justify-center md:justify-between items-center pb-4`}>
+            <header className={`flex flex-col md:flex-row justify-center md:justify-between items-center p-4 md:pb-4`}>
                 <div className="w-full flex justify-between items-center relative">
                     <Logo />
                     <MobileHeader user={user}/>

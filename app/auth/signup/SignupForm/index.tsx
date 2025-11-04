@@ -22,18 +22,19 @@ const SignupForm = () => {
     })
 
     return (
-        <div className="p-3 md:p-8 border-1 rounded-2xl w-full md:w-1/2">
+        <div className="relative z-99 flex flex-col justify-center items-center grow bg-white text-black p-3 md:p-8 rounded-t-2xl w-full md:w-1/2">
+            <h2 className="text-2xl text-center my-4 capitalize font-bold">Sign up</h2>
             <form 
                 className="p-4 flex flex-col" 
                 onSubmit={handleSubmit(values => mutate(values))}
             >
                 <fieldset className="fieldset-primary">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email Address</label>
                     <input 
                     className="form-input" 
                     id="email" 
                     {...register("email")} 
-                    placeholder="Enter your email..." 
+                    placeholder="mario.rossi@example.com" 
                     />
                 </fieldset>
                 { errors.email && <ErrorMessage message={errors.email.message!}/>}
@@ -43,7 +44,7 @@ const SignupForm = () => {
                         className="form-input" 
                         id="username"  
                         {...register("username")}
-                        placeholder="Enter your username..."
+                        placeholder="Banana420"
                     />
                 </fieldset>
                 { errors.username && <ErrorMessage message={errors.username.message!}/>}
@@ -53,11 +54,11 @@ const SignupForm = () => {
                     type="password" 
                     className="form-input" id="password" 
                     {...register("password")}
-                    placeholder="Enter your password..." 
+                    placeholder="********" 
                     />
                 </fieldset>
                     { errors.password && <ErrorMessage message={errors.password.message!}/>}
-                <button className="button-secondary min-w-[231px] m-auto hover:bg-gray-200">Submit</button>
+                <button className="button-tertiary min-w-[231px] m-auto hover:bg-gray-200">Submit</button>
             </form>
             {data?.error && <ErrorMessage message={data.error}/>}
         </div>

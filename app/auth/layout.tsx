@@ -7,7 +7,7 @@ const AuthLayout = ({
 }>) => {
   return (
     <>
-      <header className={`flex justify-between items-center pb-4`}>
+      <header className={`flex justify-center md:justify-between items-center p-8 md:pb-4`}>
         <Logo />
       </header>
       {children}

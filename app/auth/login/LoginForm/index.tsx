@@ -22,17 +22,18 @@ const LoginForm = () => {
     })
 
     return (
-        <div className="p-3 md:p-8 border-1 rounded-2xl w-full md:w-1/2">
+        <div className="relative z-99 flex flex-col justify-center items-center grow bg-white text-black p-3 md:p-8 rounded-t-2xl w-full md:w-1/2">
+            <h2 className="text-2xl text-center my-4 capitalize font-bold">Welcome Back</h2>
             <form 
                 className="p-4 flex flex-col" 
                 onSubmit={handleSubmit(values => mutate(values))}>
                 <fieldset className="fieldset-primary">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email Address</label>
                     <input 
                         className="form-input"
                         {...register('email')} 
                         id="email" 
-                        placeholder="Enter your email..." 
+                        placeholder="mario.rossi@example.com" 
                     />
                     { errors.email && <ErrorMessage message={errors.email.message!}/>}
                 </fieldset>
@@ -43,11 +44,11 @@ const LoginForm = () => {
                         {...register('password')}
                         className="form-input" 
                         id="password"
-                        placeholder="Enter your password..." 
+                        placeholder="********" 
                     />
                     { errors.password && <ErrorMessage message={errors.password.message!}/>}
                 </fieldset>
-                <button type="submit" className="button-secondary min-w-[231px] m-auto hover:bg-gray-200">{isPending ? "Logging you in!" : "Submit"}</button>
+                <button type="submit" className="button-tertiary min-w-[231px] m-auto hover:bg-gray-200">{isPending ? "Logging you in!" : "Submit"}</button>
             </form>
             {data?.error && <ErrorMessage message={data.error}/>}
         </div>

@@ -26,7 +26,7 @@ const singlePost = async ({params}:{params:{slug:string}}) => {
                             <p className="mt-5">{data.content}</p>
                         </div>
                         {data.image && (
-                            <img src={data.image} alt={`${data.title} image`} className="my-4 mx-auto rounded-2xl" />
+                            <img src={data.image} alt={`${data.title} image`} className="my-4 mx-3 rounded-2xl" />
                         )}
                     </div>
                     <PostCommentList postId={data.id} slug={slug} postAuthor={isAuthor}/>

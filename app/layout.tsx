@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased flex flex-col p-8 text-white bg-gradient-to-b from-[#5865f2] to-[#060a0b] min-h-screen`}
+        className={`${inter.className} antialiased flex flex-col md:p-8 text-white bg-gradient-to-b from-[#5865f2] to-[#060a0b] min-h-screen`}
       >
         <Toaster richColors/>
         <QueryClientProvider>
