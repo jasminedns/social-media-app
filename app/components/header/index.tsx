@@ -21,6 +21,12 @@ const Header = async () => {
             <div className="w-full flex justify-between items-center relative">
                 <Logo />
                 <MobileHeader user={user} userInfo={userinfo} />
+                <div className="hidden md:block">                
+                    <SearchBar />
+                </div>
+            </div>
+            <div className="md:hidden">
+                <SearchBar />
             </div>
         </header>
     );

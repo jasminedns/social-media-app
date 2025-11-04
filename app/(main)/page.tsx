@@ -3,6 +3,7 @@ import HomePosts from "../components/Home/HomePosts";
 import { createClient } from "@/utils/supabase/server-client";
 import AccountLinks from "../components/AccountLinks";
 import { User } from "lucide-react";
+import SearchBar from "../components/SearchBar";
 
 export const revalidate = 600;
 
