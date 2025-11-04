@@ -5,12 +5,28 @@ import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 
 const HomePosts = ({posts}:{posts:HomePostsType}) => {
-    const gradients = [
-        "bg-linear-65 from-[#1e3a8a] to-[#ea580c]", 
-        "bg-linear-65 from-[#0f172a] to-[#0d9488]", 
-        "bg-linear-65 from-[#4c1d95] to-[#be185d]", 
-        "bg-linear-65 from-[#1e293b] to-[#06b6d4]"
-    ];
+const gradients = [
+  "bg-linear-65 from-[#065f46] to-[#0ea5e9]",
+  "bg-linear-65 from-[#1e3a8a] to-[#f59e0b]",
+  "bg-linear-65 from-[#6d28d9] to-[#dc2626]",
+  "bg-linear-65 from-[#0d9488] to-[#a855f7]",
+  "bg-linear-65 from-[#9333ea] to-[#f43f5e]",
+  "bg-linear-65 from-[#1e293b] to-[#10b981]",
+  "bg-linear-65 from-[#312e81] to-[#eab308]",
+  "bg-linear-65 from-[#7f1d1d] to-[#06b6d4]",
+  "bg-linear-65 from-[#0f172a] to-[#f97316]",
+  "bg-linear-65 from-[#15803d] to-[#ec4899]",
+  "bg-linear-65 from-[#3b82f6] to-[#f43f5e]",
+  "bg-linear-65 from-[#16a34a] to-[#8b5cf6]",
+  "bg-linear-65 from-[#2563eb] to-[#facc15]",
+  "bg-linear-65 from-[#ef4444] to-[#14b8a6]",
+  "bg-linear-65 from-[#7c3aed] to-[#f59e0b]",
+  "bg-linear-65 from-[#0e7490] to-[#d97706]",
+  "bg-linear-65 from-[#047857] to-[#ef4444]",
+  "bg-linear-65 from-[#4338ca] to-[#22c55e]",
+  "bg-linear-65 from-[#1e40af] to-[#f472b6]",
+  "bg-linear-65 from-[#9d174d] to-[#14b8a6]"
+];
 
     const GetRandomGradient = () => {
         const randomColour = Math.floor(Math.random() * gradients.length);
