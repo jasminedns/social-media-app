@@ -19,7 +19,7 @@ const LogoutButton = ({toggleMenu}:LogoutProps) => {
         <div className="w-full">
             <button
                 onClick={handleClick}
-                className="button-primary rounded-b-2xl md:rounded-2xl md:mr-10"
+                className="button-secondary uppercase rounded-b-2xl md:rounded-2xl"
             >
                 Log out
             </button>

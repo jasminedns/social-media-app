@@ -4,17 +4,29 @@
 
 @layer components {
   .button-primary {
-    @apply uppercase w-full text-center py-2 px-4 font-bold cursor-pointer hover:bg-gray-100 md:hover:text-[#5865f2]
+    @apply uppercase w-full text-center my-3 py-2 px-4 font-bold cursor-pointer bg-transparent
   }
+
+  .button-primary:hover {
+    @apply bg-gray-100 text-[#5865f2]
+  }
+
   .button-secondary {
-    @apply bg-[#5865f2a3] border-1 text-white py-2 px-4 font-bold rounded-xl cursor-pointer hover:bg-[#4752c4] hover:border-white hover:text-[#5865f2] 
+    @apply bg-[#5865f2a3] border-1 text-white my-3 py-2 px-4 font-bold rounded-xl cursor-pointer
   }
+
+  .button-secondary:hover {
+    @apply bg-white border-white text-[#5865f2]
+  }
+
   .button-tertiary {
-    @apply bg-gradient-to-r from-[#5865f2] to-[#ff99cc] border-1 text-white py-2 px-4 font-bold rounded-2xl cursor-pointer hover:bg-[#4752c4] hover:border-white hover:text-[#5865f2] shadow-md shadow-neutral-400
+    @apply bg-gradient-to-r from-[#5865f2] to-[#ff99cc] border-1 text-white py-2 px-4 font-bold rounded-2xl cursor-pointer shadow-md shadow-neutral-400
   }
+
   .form-input {
     @apply border-1 border-[#13131353] rounded-2xl p-2 my-4 shadow-xs shadow-neutral-400
   }
+
   .fieldset-primary {
     @apply flex flex-col justify-center items-center
   }

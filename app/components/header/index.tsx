@@ -22,10 +22,6 @@ const Header = async () => {
                 <Logo />
                 <MobileHeader user={user} userInfo={userinfo} />
             </div>
-            <SearchBar />
-            <div className="hidden md:flex justify-center items-center gap-5">
-                <AccountLinks user={user} />
-            </div>
         </header>
     );
 };
