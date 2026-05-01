@@ -32,6 +32,7 @@ const gradients = [
         const randomColour = Math.floor(Math.random() * gradients.length);
         return gradients[randomColour];
     }
+
     return (
         <div className="md:flex md:flex-wrap justify-end">
             { posts && posts.map(({id, slug, title, users, image, created_at}) =>
@@ -47,8 +48,8 @@ const gradients = [
                     <h2 className="font-bold text-center m-3">{title}</h2>
                 </Link>
                 {image !== null &&
-                    <div className="md:m-4 p-3 mx-auto">
-                        <img src={image} alt={`${image} ${title}`} className="rounded w-[70%] h-auto mx-auto"/>
+                    <div className="md:m-4 p-3 m-auto h-[400px] overflow-hidden">
+                        <img src={image} alt={`${image} ${title}`} className="rounded w-[70%] h-full mx-auto object-scale-down"/>
                     </div>
                 }
             </div>
